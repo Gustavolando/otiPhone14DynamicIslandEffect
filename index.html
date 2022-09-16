@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 14 Dynamic Island Effect</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="box">
+    <ion-icon name="chevron-back-outline" class="leftArrow"></ion-icon>
+    <div class="inner">
+      <div class="island_popup">
+        <div class="content">
+          <div class="details">
+            <div class="imgBx">
+              <img src="./assets/img.jpeg" alt="Portrait photo">
+            </div>
+            <p>Gustavo Calling</p>
+          </div>
+          <div class="action">
+            <ion-icon name="call" class="red"></ion-icon>
+            <ion-icon name="call" class="green"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+    <i class="btn btn1"></i>
+    <i class="btn btn2"></i>
+    <i class="btn btn3"></i>
+    <i class="rightSideBtn"></i>
+    <ion-icon name="chevron-forward-outline" class="rightArrow"></ion-icon>
+  </div>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script>
+    let popup = document.querySelector('.island_popup')
+    popup.onclick = function () {
+      popup.classList.toggle('active')
+    }
+    let currBg = 6
+    const bgs = [
+      './assets/bg1.jpg',
+      './assets/bg2.jpeg',
+      './assets/bg3.jpeg',
+      './assets/bg4.jpeg',
+      './assets/bg5.jpeg',
+      './assets/bg6.jpeg'
+    ]
+    let rightArrow = document.querySelector('.rightArrow')
+    let leftArrow = document.querySelector('.leftArrow')
+    rightArrow.addEventListener('click', nextBg)
+    leftArrow.addEventListener('click', prevBg)
+    
+    function nextBg() {
+      currBg++
+      if (currBg >= bgs.length) currBg = 0
+      setBg(currBg)
+    }
+
+    function prevBg() {
+      currBg--
+      if (currBg < 0) currBg = bgs.length - 1 
+      setBg(currBg)
+    }
+    
+    function setBg(bgPos) {
+      let inner = document.querySelector('.inner')
+      inner.style.background = 'url(' + bgs[bgPos] + ')'
+      inner.style.backgroundSize = 'cover'
+      inner.style.backgroundPosition = 'center'
+    }
+
+  </script>
+</body>
+</html>
